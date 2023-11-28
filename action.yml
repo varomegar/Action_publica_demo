@@ -1,0 +1,20 @@
+name: Instalar y Comprobar Node
+description: Archivo que instala y chequea la version de node instalada
+on: [push]
+
+jobs:
+  install_and_check_node:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout código
+      uses: actions/checkout@v2
+
+    - name: Instalar Node
+      run: |
+        curl -fsSL https://deb.nodesource.com/setup_14.x | sudo -E bash -
+        sudo apt-get install -y nodejs
+
+    - name: Comprobar versión de Node
+      run: |
+        node --version
